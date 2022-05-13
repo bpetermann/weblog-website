@@ -49,6 +49,12 @@ const Login = () => {
               className={classes['showPassword']}
             />
           </div>
+          <div className={classes['button-container']}>
+            <button className={classes['loginButton']}>Login</button>
+            <Link to='/register' className={classes['registerButton']}>
+              Sign Up
+            </Link>
+          </div>
         </form>
       </main>
     </div>

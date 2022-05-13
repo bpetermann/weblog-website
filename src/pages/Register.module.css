@@ -12,7 +12,8 @@
 }
 
 .emailInput,
-.passwordInput {
+.passwordInput,
+.nameInput {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 2;
@@ -66,6 +67,17 @@
   line-height: 1.5;
   border: none;
   border-radius: 0.5rem;
+}
+
+.invalid-message {
+  margin-top: -1rem;
+  color: #dc3545;
+}
+
+.invalid {
+  background-color: #fff;
+  border-color: #dc3545;
+  outline: 0;
 }
 
 @media (min-width: 40rem) {
