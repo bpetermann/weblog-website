@@ -1,0 +1,35 @@
+.navbar {
+  background-color: #2a303c;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.25rem;
+  margin-bottom: -1.5rem;
+  padding-bottom: 1.45rem;
+  border-bottom: 0.4rem solid #2a303c;
+}
+
+.container {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 90%;
+}
+
+.hamburger {
+  color: #fff;
+}
+
+@media (min-width: 40rem) {
+  .container {
+    width: 75%;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}

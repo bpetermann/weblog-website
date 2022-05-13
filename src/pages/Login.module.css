@@ -1,0 +1,56 @@
+.container {
+  scrollbar-width: none;
+  margin: auto;
+  width: 90%;
+}
+
+.form label {
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.375rem 0.75rem;
+}
+
+.emailInput,
+.passwordInput {
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  background-color: #f3f4f5;
+  border: 1px solid #f3f4f5;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.form input {
+  color: #000;
+}
+
+.form input:hover,
+.form input:focus,
+.form input:active {
+  background-color: #fff;
+  border-color: #f3f4f5;
+}
+
+.passwordInputDiv {
+  position: relative;
+}
+
+.showPassword {
+  cursor: pointer;
+  color: #000;
+  position: absolute;
+  top: 5%;
+  opacity: 0.4;
+  right: 5%;
+}
+
+@media (min-width: 40rem) {
+  .container {
+    width: 75%;
+  }
+}
