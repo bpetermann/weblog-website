@@ -2,6 +2,7 @@
   scrollbar-width: none;
   margin: auto;
   width: 90%;
+  max-width: 60rem;
 }
 
 .form label {
@@ -17,7 +18,7 @@
   font-size: 1rem;
   line-height: 2;
   background-color: #f3f4f5;
-  border: 1px solid #f3f4f5;
+  border: 0.125rem solid #f3f4f5;
   border-radius: 0.5rem;
   transition: border-color 0.15s ease-in-out;
   width: 100%;

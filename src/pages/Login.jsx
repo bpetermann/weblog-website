@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classes from './Login.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AiOutlineEye } from 'react-icons/ai';
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
   });
   const { email, password } = formData;
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const onChangeHandler = (e) => {
     setFormData((prevState) => ({

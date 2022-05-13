@@ -1,0 +1,7 @@
+.container {
+    scrollbar-width: none;
+    margin: auto;
+    width: 90%;
+    max-width: 60rem;
+  }
+  

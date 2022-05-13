@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import classes from './Register.module.css';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
+import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase.config';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineEye } from 'react-icons/ai';
 
@@ -42,11 +49,44 @@ const Register = () => {
     setConfirmPasswordIsTouched(true);
   };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (!passwordIsValid || !confirmPasswordIsValid) {
+      return;
+    }
+    try {
+      const auth = getAuth();
+
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const user = userCredential.user;
+
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      delete formDataCopy.confirmPassword;
+      formDataCopy.timestamp = serverTimestamp();
+
+      await setDoc(doc(db, 'users', user.uid), formDataCopy);
+
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={classes['container']}>
       <h1>Register</h1>
       <main>
-        <form className={classes['form']}>
+        <form className={classes['form']} onSubmit={onSubmit}>
           <input
             type='text'
             className={classes['nameInput']}
@@ -121,7 +161,7 @@ const Register = () => {
             )}
           </div>
           <div className={classes['button-container']}>
-            <button className={classes['loginButton']}>Login</button>
+            <button className={classes['submit-button']}>Sign Up</button>
             <Link to='/login' className={classes['registerButton']}>
               Login
             </Link>
