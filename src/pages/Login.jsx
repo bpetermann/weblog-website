@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import classes from './Login.module.css';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { AiOutlineEye } from 'react-icons/ai';
 
 const Login = () => {
@@ -11,7 +13,7 @@ const Login = () => {
   });
   const { email, password } = formData;
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const onChangeHandler = (e) => {
     setFormData((prevState) => ({
@@ -20,11 +22,29 @@ const Login = () => {
     }));
   };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const auth = getAuth();
+
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      if (userCredential.user) {
+        navigate('/');
+      }
+    } catch (error) {
+      toast.error(`Sorry, we couldn't log you in`);
+    }
+  };
+
   return (
     <div className={classes['container']}>
       <h1>Login</h1>
       <main>
-        <form className={classes['form']}>
+        <form className={classes['form']} onSubmit={onSubmit}>
           <input
             type='email'
             className={classes['emailInput']}

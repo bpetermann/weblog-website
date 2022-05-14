@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import classes from './Register.module.css';
 import {
   getAuth,
@@ -18,13 +19,22 @@ const Register = () => {
     password: '',
     confirmPassword: '',
   });
-
-  const [passwordTouched, setPasswordTouched] = useState(false);
+  const [passwordValidation, setPasswordValidation] = useState({
+    length: false,
+    specialChars: false,
+    passwordTouched: false,
+  });
   const [confirmPasswordTouched, setConfirmPasswordIsTouched] = useState(false);
 
   const { name, email, password, confirmPassword } = formData;
+  const { length, specialChars, passwordTouched } = passwordValidation;
 
-  const passwordIsValid = password.trim().length >= 6;
+  // eslint-disable-next-line
+  const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
+  const passwordIsValid = Object.values(passwordValidation).every(
+    (value) => value === true
+  );
   const passwordIsInavlid = !passwordIsValid && passwordTouched;
   const confirmPasswordIsValid = password === confirmPassword ? true : false;
   const confirmPasswordIsInvalid =
@@ -39,9 +49,13 @@ const Register = () => {
     }));
   };
 
-  const passwordInputBlurHandler = (event) => {
-    event.preventDefault();
-    setPasswordTouched(true);
+  const passwordInputBlurHandler = (e) => {
+    e.preventDefault();
+    setPasswordValidation({
+      passwordTouched: true,
+      length: e.target.value.trim().length >= 6,
+      specialChars: format.test(e.target.value),
+    });
   };
 
   const confirmPasswordBlurHandler = (event) => {
@@ -51,6 +65,7 @@ const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
     if (!passwordIsValid || !confirmPasswordIsValid) {
       return;
     }
@@ -75,10 +90,10 @@ const Register = () => {
       formDataCopy.timestamp = serverTimestamp();
 
       await setDoc(doc(db, 'users', user.uid), formDataCopy);
-
+      toast.success('Registration successful');
       navigate('/');
     } catch (error) {
-      console.log(error);
+      toast.error('Sorry, something went wrong with registration');
     }
   };
 
@@ -116,7 +131,7 @@ const Register = () => {
               onChange={onChangeHandler}
               onBlur={passwordInputBlurHandler}
               className={
-                !confirmPasswordIsInvalid
+                !passwordIsInavlid
                   ? classes['passwordInput']
                   : `${classes['passwordInput']} ${classes['invalid']}`
               }
@@ -127,9 +142,19 @@ const Register = () => {
               size={32}
               className={classes['showPassword']}
             />
-            {passwordIsInavlid && (
+            <p className={classes['password-info']}>
+              Create a password that is at least 6 characters long and includes
+              1 special character
+            </p>
+            {passwordIsInavlid && !length && (
               <p className={classes['invalid-message']}>
                 *Your password must be at least 6 characters long
+              </p>
+            )}
+
+            {passwordIsInavlid && !specialChars && (
+              <p className={classes['invalid-message']}>
+                *Your password must contain at least 1 special character
               </p>
             )}
           </div>
@@ -160,6 +185,7 @@ const Register = () => {
               </p>
             )}
           </div>
+
           <div className={classes['button-container']}>
             <button className={classes['submit-button']}>Sign Up</button>
             <Link to='/login' className={classes['registerButton']}>

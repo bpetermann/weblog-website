@@ -16,12 +16,12 @@ const Navbar = () => {
           Posts
         </NavLink>
         <NavLink
-          to='/account'
+          to='/profile'
           style={({ isActive }) =>
             isActive ? { borderColor: '#fff' } : undefined
           }
         >
-          Account
+          Profile
         </NavLink>
 
         <GiHamburgerMenu size={30} className={classes['hamburger']} />

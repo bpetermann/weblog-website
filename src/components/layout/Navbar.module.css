@@ -6,9 +6,11 @@
   color: #fff;
   text-decoration: none;
   font-size: 1.25rem;
-  margin-bottom: -1.55rem;
-  padding-bottom: 1.6rem;
-  border-bottom: 0.4rem solid #2a303c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 5rem;
+  border-bottom: 0.5rem solid #2a303c;
 }
 
 .container {
@@ -17,7 +19,7 @@
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  width: 75%;
+  width: 90%;
 }
 
 .hamburger {
@@ -27,6 +29,7 @@
 @media (min-width: 40rem) {
   .container {
     width: 75%;
+    max-width: 60rem;
   }
 
   .hamburger {
