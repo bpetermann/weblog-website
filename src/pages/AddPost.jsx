@@ -8,7 +8,8 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { toast } from 'react-toastify';
-// import { db } from '../firebase.config';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase.config';
 import { useNavigate } from 'react-router-dom';
 
 const AddPost = () => {
@@ -41,7 +42,7 @@ const AddPost = () => {
     }
 
     return () => {
-      isMounted.curren = false;
+      isMounted.current = false;
     };
     // eslint-disable-next-line
   }, [isMounted]);
@@ -60,7 +61,6 @@ const AddPost = () => {
         [e.target.id]: e.target.value,
       }));
     }
-    console.log(formData);
   };
 
   const onSubmit = async (e) => {
@@ -108,7 +108,7 @@ const AddPost = () => {
       });
     };
 
-    const imgUrls = await Promise.all(
+    const imgUrl = await Promise.all(
       [...image].map((img) => storeImage(img))
     ).catch(() => {
       setLoading(false);
@@ -116,9 +116,18 @@ const AddPost = () => {
       return;
     });
 
-    console.log(imgUrls);
+    const formDataCopy = {
+      ...formData,
+      imgUrl: imgUrl[0],
+      timestamp: serverTimestamp(),
+      // author:
+    };
+    delete formDataCopy.image;
 
+    const docRef = await addDoc(collection(db, 'posts'), formDataCopy);
+    toast.success('Post saved');
     setLoading(false);
+    navigate('/');
   };
 
   if (loading) {
