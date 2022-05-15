@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import classes from './Profile.module.css';
 import { getAuth } from 'firebase/auth';
 
@@ -19,7 +19,7 @@ const Profile = () => {
     auth.signOut();
     navigate('/');
   };
-  console.log(setFormData)
+  console.log(setFormData);
 
   return (
     <div className={classes['container']}>
@@ -27,6 +27,9 @@ const Profile = () => {
         <h1>{name}'s Profile</h1>
       </header>
       <p>{email}</p>
+      <Link className={classes['add-post-link']} to='/add-post'>
+       Add Post
+      </Link>
       <button className={classes['logout-button']} onClick={logoutHander}>
         Logout
       </button>

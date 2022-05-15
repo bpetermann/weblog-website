@@ -15,6 +15,15 @@ const Navbar = () => {
         >
           Posts
         </NavLink>
+
+        <NavLink
+          to='/add-post'
+          style={({ isActive }) =>
+            isActive ? { borderColor: '#fff' } : undefined
+          }
+        >
+          Add Post
+        </NavLink>
         <NavLink
           to='/profile'
           style={({ isActive }) =>

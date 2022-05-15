@@ -23,7 +23,7 @@ const Posts = () => {
           return fetchedPosts.push({
             id: doc.id,
             data: doc.data(),
-            time: doc.data().timestamp.toDate().toUTCString(),
+            time: doc.data().timestamp.toDate().toDateString(),
           });
         });
 
@@ -44,7 +44,7 @@ const Posts = () => {
   }
 
   return (
-    <div className={classes['container']}>
+    <div>
       <div className={classes['posts-container']}>
         {posts.map((post) => (
           <div key={post.id} className={classes['post']}>
@@ -54,11 +54,11 @@ const Posts = () => {
               className={classes['post-image']}
             />
             <div className={classes['posts-content']}>
-              <h3>{post.data.title}</h3>
-              <p>Category: {post.data.tag}</p>
-              <p>
+              <h1>{post.data.title}</h1>
+              <p className={classes['posts-credentials']}>
                 Published by: {post.data.author} on {post.time}
               </p>
+              <p className={classes['posts-category']}>{post.data.tag}</p>
 
               <p>{post.data.text}</p>
             </div>

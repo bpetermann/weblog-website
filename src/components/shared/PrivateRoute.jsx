@@ -7,9 +7,9 @@ const PrivateRoute = () => {
 
   if (checkingStatus) {
     return (
-      <h3>
+      <div>
         <h3>Loading...</h3>
-      </h3>
+      </div>
     );
   }
 

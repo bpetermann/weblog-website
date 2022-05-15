@@ -98,7 +98,7 @@ const Register = () => {
   };
 
   return (
-    <div className={classes['container']}>
+    <div>
       <h1>Register</h1>
       <main>
         <form className={classes['form']} onSubmit={onSubmit}>

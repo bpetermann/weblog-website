@@ -1,10 +1,3 @@
-.container {
-  scrollbar-width: none;
-  margin: auto;
-  width: 90%;
-  max-width: 60rem;
-}
-
 .form label {
   line-height: 1.5;
   font-size: 1rem;
@@ -121,25 +114,3 @@
   border-color: #dc3545;
   outline: 0;
 }
-
-@media (min-width: 40rem) {
-  .container {
-    width: 75%;
-  }
-}
-
-/* <div className={classes['profileImage-container']}>
-<label>
-  <span className={classes['profileImage-label']}>
-    Profile Image
-  </span>
-</label>
-<input
-  className={classes['profileImage-input']}
-  type='file'
-  id='profileImage'
-  onChange={onChangeHandler}
-  max='1'
-  accept='.jpg,.png,.jpeg'
-/>
-</div> */

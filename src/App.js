@@ -6,21 +6,27 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Posts from './pages/Posts';
 import Register from './pages/Register';
-import PrivateRoute from './components/shared/PrivateRoute'
+import PrivateRoute from './components/shared/PrivateRoute';
+import AddPost from './pages/AddPost';
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
-        <Routes>
-          <Route path='/' element={<Posts />} />
-          <Route path='/profile' element={<PrivateRoute />}>
-            <Route path='/profile' element={<Profile />} />
-          </Route>
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-        </Routes>
+        <div className='container'>
+          <Routes>
+            <Route path='/' element={<Posts />} />
+            <Route path='/profile' element={<PrivateRoute />}>
+              <Route path='/profile' element={<Profile />} />
+            </Route>
+            <Route path='/add-post' element={<PrivateRoute />}>
+              <Route path='/add-post' element={<AddPost />} />
+            </Route>
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+          </Routes>
+        </div>
       </Router>
       <ToastContainer theme='dark' />
     </>
