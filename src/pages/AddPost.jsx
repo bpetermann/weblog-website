@@ -6,7 +6,7 @@ import {
   ref,
   uploadBytesResumable,
   getDownloadURL,
-} from 'firebase/storage'
+} from 'firebase/storage';
 import { toast } from 'react-toastify';
 // import { db } from '../firebase.config';
 import { useNavigate } from 'react-router-dom';
