@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import classes from './Posts.module.css';
-import { Link } from 'react-router-dom';
 import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
+import PostsList from '../components/posts/PostsList';
 
 const Posts = () => {
   const [posts, setPosts] = useState(null);
@@ -44,35 +43,7 @@ const Posts = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (loading) {
-    return <p>...Loading</p>;
-  }
-
-  return (
-    <div>
-      <div className={classes['posts-container']}>
-        {posts.map((post) => (
-          <div key={post.id} className={classes['post']}>
-            <Link to={`/${post.id}`}>
-              <img
-                src={post.imgUrl}
-                alt={post.title}
-                className={classes['post-image']}
-              />
-            </Link>
-            <div className={classes['posts-content']}>
-              <h1>{post.title}</h1>
-              <p className={classes['posts-credentials']}>
-                Published by: {post.author} on {post.time}
-              </p>
-              <p className={classes['posts-tag']}>{post.tag}</p>
-              <p>{post.text} […]</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  return <PostsList posts={posts} loading={loading} />;
 };
 
 export default Posts;

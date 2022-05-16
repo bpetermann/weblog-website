@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import classes from './Profile.module.css';
+import { useNavigate } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import {
   collection,
@@ -13,6 +12,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
+import UserProfile from '../components/user/UserProfile';
 
 const Profile = () => {
   const auth = getAuth();
@@ -40,6 +40,7 @@ const Profile = () => {
         return posts.push({
           id: doc.id,
           data: doc.data(),
+          preview: doc.data().text.slice(0, 25),
         });
       });
 
@@ -62,30 +63,15 @@ const Profile = () => {
     toast.success('Post deleted');
   };
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
-    <div className={classes['container']}>
-      <header>
-        <h1>{name}'s Profile</h1>
-      </header>
-      <p>{email}</p>
-      <Link className={classes['add-post-link']} to='/add-post'>
-        Add Post
-      </Link>
-      <button className={classes['logout-button']} onClick={logoutHander}>
-        Logout
-      </button>
-      {posts.map((post) => (
-        <div className={classes['user-posts']}>
-          <p>{post.data.tag}</p>
-          <p>{post.data.title}</p>
-          <button onClick={() => onDeleteHandler(post.id)}>Delete</button>
-        </div>
-      ))}
-    </div>
+    <UserProfile
+      isLoading={isLoading}
+      name={name}
+      email={email}
+      posts={posts}
+      onDeleteHandler={onDeleteHandler}
+      logoutHander={logoutHander}
+    />
   );
 };
 

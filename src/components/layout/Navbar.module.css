@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #2a303c;
+  background-color: #242933;
 }
 
 .navbar a {
@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   height: 5rem;
-  border-bottom: 0.5rem solid #2a303c;
+  border-bottom: 0.5rem solid #242933;
 }
 
 .navbar a:hover {

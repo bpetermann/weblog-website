@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import classes from './AddPost.module.css';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import {
   getStorage,
@@ -11,6 +10,7 @@ import { toast } from 'react-toastify';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { useNavigate } from 'react-router-dom';
+import AddPostForm from '../components/posts/AddPostForm';
 
 const AddPost = () => {
   const [loading, setLoading] = useState(false);
@@ -46,22 +46,6 @@ const AddPost = () => {
     };
     // eslint-disable-next-line
   }, [isMounted]);
-
-  const onChangeHandler = (e) => {
-    if (e.target.files) {
-      setFormData((prevState) => ({
-        ...prevState,
-        image: e.target.files,
-      }));
-    }
-
-    if (!e.target.files) {
-      setFormData((prevState) => ({
-        ...prevState,
-        [e.target.id]: e.target.value,
-      }));
-    }
-  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -129,57 +113,15 @@ const AddPost = () => {
     navigate(`/${docRef.id}`);
   };
 
-  if (loading) {
-    return <p>...Loading</p>;
-  }
-
   return (
-    <div className={classes['container']}>
-      <header>
-        <h1>Write a Post</h1>
-      </header>
-      <form className={classes['form']} onSubmit={onSubmit}>
-        <input
-          type='text'
-          className={classes['titleInput']}
-          placeholder='Title'
-          id='title'
-          value={title}
-          onChange={onChangeHandler}
-          required
-        />
-        <textarea
-          type='text'
-          className={classes['textInput']}
-          placeholder='Text'
-          id='text'
-          value={text}
-          onChange={onChangeHandler}
-          required
-        />
-        <input
-          type='tag'
-          className={classes['tagInput']}
-          placeholder='Tag'
-          id='tag'
-          value={tag}
-          onChange={onChangeHandler}
-        />
-
-        <label className={classes['image-label']}>Image</label>
-        <input
-          className={classes['imageInput']}
-          type='file'
-          id='image'
-          onChange={onChangeHandler}
-          max='1'
-          accept='.jpg,.png,.jpeg'
-        />
-        <button type='submit' className={classes['submit-button']}>
-          Add Post
-        </button>
-      </form>
-    </div>
+    <AddPostForm
+      onSubmit={onSubmit}
+      loading={loading}
+      title={title}
+      text={text}
+      tag={tag}
+      setFormData={setFormData}
+    />
   );
 };
 
