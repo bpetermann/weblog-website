@@ -120,14 +120,13 @@ const AddPost = () => {
       ...formData,
       imgUrl: imgUrl[0],
       timestamp: serverTimestamp(),
-      // author:
     };
     delete formDataCopy.image;
 
     const docRef = await addDoc(collection(db, 'posts'), formDataCopy);
     toast.success('Post saved');
     setLoading(false);
-    navigate('/');
+    navigate(`/${docRef.id}`);
   };
 
   if (loading) {

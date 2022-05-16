@@ -8,6 +8,7 @@ import Posts from './pages/Posts';
 import Register from './pages/Register';
 import PrivateRoute from './components/shared/PrivateRoute';
 import AddPost from './pages/AddPost';
+import Post from './pages/Post';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/:postId' element={<Post />} />
           </Routes>
         </div>
       </Router>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classes from './Posts.module.css';
+import { Link } from 'react-router-dom';
 import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
@@ -22,7 +23,11 @@ const Posts = () => {
         querySnap.forEach((doc) => {
           return fetchedPosts.push({
             id: doc.id,
-            data: doc.data(),
+            author: doc.data().author,
+            title: doc.data().title,
+            imgUrl: doc.data().imgUrl,
+            tag: doc.data().tag,
+            text: doc.data().text.slice(0, 100),
             time: doc.data().timestamp.toDate().toDateString(),
           });
         });
@@ -48,19 +53,20 @@ const Posts = () => {
       <div className={classes['posts-container']}>
         {posts.map((post) => (
           <div key={post.id} className={classes['post']}>
-            <img
-              src={post.data.imgUrl}
-              alt={post.data.title}
-              className={classes['post-image']}
-            />
+            <Link to={`/${post.id}`}>
+              <img
+                src={post.imgUrl}
+                alt={post.title}
+                className={classes['post-image']}
+              />
+            </Link>
             <div className={classes['posts-content']}>
-              <h1>{post.data.title}</h1>
+              <h1>{post.title}</h1>
               <p className={classes['posts-credentials']}>
-                Published by: {post.data.author} on {post.time}
+                Published by: {post.author} on {post.time}
               </p>
-              <p className={classes['posts-category']}>{post.data.tag}</p>
-
-              <p>{post.data.text}</p>
+              <p className={classes['posts-tag']}>{post.tag}</p>
+              <p>{post.text} […]</p>
             </div>
           </div>
         ))}
