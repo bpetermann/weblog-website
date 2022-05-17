@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
 body {
+  background-color: #2a303c;
+  color: #a6adba;
+  font-family: 'Lato', sans-serif;
   margin: 0;
 }
 
@@ -21,4 +26,9 @@ input:focus {
     width: 75%;
     max-width: 60rem;
   }
+}
+
+.no-scroll {
+  height: 100vh;
+  overflow: hidden;
 }

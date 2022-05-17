@@ -124,7 +124,7 @@ const RegisterForm = ({
               )}
             </div>
 
-            <div className={classes['passwordInputDiv']}>
+            <div className={classes['confirmPasswordInputDiv']}>
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder='Confirm Password'
@@ -142,7 +142,7 @@ const RegisterForm = ({
               <AiOutlineEye
                 onClick={() => setShowPassword((prevState) => !prevState)}
                 size={32}
-                className={classes['showPassword']}
+                className={classes['showPassword-confirm']}
               />
               {confirmPasswordIsInvalid && (
                 <p className={classes['invalid-message']}>

@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './UserProfile.module.css';
 import { Link } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
+import Spinner from '../shared/Spinner';
 
 const UserProfile = ({
   isLoading,
@@ -12,7 +13,7 @@ const UserProfile = ({
   logoutHander,
 }) => {
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   return (

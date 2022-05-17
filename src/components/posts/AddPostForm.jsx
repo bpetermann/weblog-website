@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from '../shared/Spinner';
 import classes from './AddPostForm.module.css';
 
 const AddPostForm = ({ loading, onSubmit, title, text, tag, setFormData }) => {
@@ -19,7 +20,7 @@ const AddPostForm = ({ loading, onSubmit, title, text, tag, setFormData }) => {
   };
 
   if (loading) {
-    return <p>...Loading</p>;
+    return <Spinner />;
   }
 
   return (

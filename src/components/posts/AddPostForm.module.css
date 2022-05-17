@@ -1,36 +1,65 @@
 .form {
-    margin-top: 1.75rem;
-  }
-  
-  .titleInput,
-  .textInput,
-  .tagInput,
-  .imageInput {
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 2;
-    background-color: #f3f4f5;
-    border: 0.125rem solid #f3f4f5;
-    border-radius: 0.5rem;
-    transition: border-color 0.15s ease-in-out;
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-  
-  .image-label {
-    font-size: 1.25rem;
-    margin-left: 1rem;
-  }
-  
-  .submit-button {
-    width: 25%;
-    cursor: pointer;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 0.5rem;
-  }
-  
+  margin-top: 1.75rem;
+}
+
+.titleInput,
+.textInput,
+.tagInput,
+.imageInput {
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 2;
+  background-color: #242933;
+  border: 0.125rem solid #242933;
+  color: #a6adba;
+  border-radius: 0.5rem;
+  transition: border-color 0.15s ease-in-out;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.textInput {
+  font-size: 1rem;
+}
+
+.form input:hover,
+.form input:focus,
+.form input:active,
+.form textarea:hover,
+.form textarea:focus,
+.form textarea:active {
+  border-color: #a6adba;
+}
+
+.image-label {
+  font-size: 1.2rem;
+  color: #616773;
+}
+
+.submit-button {
+  width: 25%;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #5c1bcf;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.imageInput {
+  margin-top: 0.5rem;
+
+  color: #616773;
+}
+
+.imageInput::file-selector-button {
+  cursor: pointer;
+  background-color: #5c1bcf;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+}

@@ -3,37 +3,42 @@
 }
 
 .navbar a {
-  color: #fff;
+  color: #a6adba;
   text-decoration: none;
   font-size: 1.25rem;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   height: 5rem;
   border-bottom: 0.5rem solid #242933;
+  display: none;
 }
 
 .navbar a:hover {
-  border-bottom: 0.5rem solid #fff;
+  border-bottom: 0.5rem solid #a6adba;
 }
 
 .container {
   height: 5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin: auto;
   width: 90%;
 }
 
 .hamburger {
-  color: #fff;
+  color: #a6adba;
 }
 
 @media (min-width: 40rem) {
+  .navbar a {
+    display: flex;
+  }
+
   .container {
     width: 75%;
     max-width: 60rem;
+    justify-content: space-between;
   }
 
   .hamburger {

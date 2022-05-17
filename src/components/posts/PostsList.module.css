@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #fff;
+  background-color: #242933;
   border-radius: 0.5rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
 }
@@ -37,9 +37,9 @@
 }
 
 .posts-tag {
-  color: #666;
+  color: #3abff8;
   width: fit-content;
-  border-bottom: 0.125rem solid #666;
+  border-bottom: 0.125rem solid #3abff8;
 }
 
 .posts-content {

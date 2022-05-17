@@ -1,7 +1,9 @@
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/layout/Navbar';
+import NavbarModal from './components/layout/NavbarModal';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Posts from './pages/Posts';
@@ -11,10 +13,26 @@ import AddPost from './pages/AddPost';
 import Post from './pages/Post';
 
 function App() {
+  const [modal, setModal] = useState(false);
+
+  const modalToggleHandler = () => {
+    setModal((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    if (modal) {
+      document.body.classList.add('no-scroll');
+      console.log('hi');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [modal]);
+
   return (
     <>
       <Router basename='/weblog-website'>
-        <Navbar />
+        <Navbar toggleModal={modalToggleHandler} />
+        {modal && <NavbarModal onClose={modalToggleHandler} />}
         <div className='container'>
           <Routes>
             <Route path='/' element={<Posts />} />
@@ -30,7 +48,7 @@ function App() {
           </Routes>
         </div>
       </Router>
-      <ToastContainer theme='dark' />
+      <ToastContainer theme='colored' />
     </>
   );
 }

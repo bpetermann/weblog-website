@@ -1,0 +1,33 @@
+.container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    right: 0%;
+    top: 5rem;
+    width: 50%;
+    z-index: 50;
+    height: 100vh;
+    background-color: #242933;
+    padding-top: 1.75rem;
+    animation: slide-in 400ms ease-out forwards;
+  }
+  
+  .container a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+  
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

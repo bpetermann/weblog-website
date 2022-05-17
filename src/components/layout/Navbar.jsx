@@ -3,14 +3,14 @@ import classes from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-const Navbar = () => {
+const Navbar = ({ toggleModal }) => {
   return (
     <div className={classes['navbar']}>
       <div className={classes['container']}>
         <NavLink
           to='/'
           style={({ isActive }) =>
-            isActive ? { borderColor: '#fff' } : undefined
+            isActive ? { borderColor: '#a6adba' } : undefined
           }
         >
           Posts
@@ -19,7 +19,7 @@ const Navbar = () => {
         <NavLink
           to='/add-post'
           style={({ isActive }) =>
-            isActive ? { borderColor: '#fff' } : undefined
+            isActive ? { borderColor: '#a6adba' } : undefined
           }
         >
           Add Post
@@ -27,13 +27,17 @@ const Navbar = () => {
         <NavLink
           to='/profile'
           style={({ isActive }) =>
-            isActive ? { borderColor: '#fff' } : undefined
+            isActive ? { borderColor: '#a6adba' } : undefined
           }
         >
           Profile
         </NavLink>
 
-        <GiHamburgerMenu size={30} className={classes['hamburger']} />
+        <GiHamburgerMenu
+          size={30}
+          className={classes['hamburger']}
+          onClick={toggleModal}
+        />
       </div>
     </div>
   );

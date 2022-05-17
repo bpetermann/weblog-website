@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './PostsList.module.css';
 import { Link } from 'react-router-dom';
+import Spinner from '../shared/Spinner';
 
 const PostsList = ({ posts, loading }) => {
   if (loading) {
-    return <p>...Loading</p>;
+    return <Spinner />;
   }
 
   return (
