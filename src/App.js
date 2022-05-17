@@ -13,7 +13,7 @@ import Post from './pages/Post';
 function App() {
   return (
     <>
-      <Router>
+      <Router basename='/weblog-website'>
         <Navbar />
         <div className='container'>
           <Routes>
