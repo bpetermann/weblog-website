@@ -34,12 +34,12 @@ const Post = () => {
     fetchPost();
   }, [params.postId]);
 
-  if (post === null) {
-    return <Alert>No post found</Alert>;
-  }
-
   if (isLoading) {
     return <Spinner />;
+  }
+
+  if (post === null) {
+    return <Alert>No post found</Alert>;
   }
 
   return (
