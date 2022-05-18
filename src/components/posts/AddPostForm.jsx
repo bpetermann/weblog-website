@@ -1,6 +1,7 @@
 import React from 'react';
 import Spinner from '../shared/Spinner';
 import classes from './AddPostForm.module.css';
+import Button from '../shared/Button';
 
 const AddPostForm = ({ loading, onSubmit, title, text, tag, setFormData }) => {
   const onChangeHandler = (e) => {
@@ -65,9 +66,7 @@ const AddPostForm = ({ loading, onSubmit, title, text, tag, setFormData }) => {
           max='1'
           accept='.jpg,.png,.jpeg'
         />
-        <button type='submit' className={classes['submit-button']}>
-          Add Post
-        </button>
+        <Button>Add Post</Button>
       </form>
     </div>
   );

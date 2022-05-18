@@ -1,0 +1,12 @@
+.alert {
+  text-decoration: none;
+  color: #f87272;
+  border: 0.125rem solid #f87272;
+  text-align: center;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: 0.5rem;
+  margin: 1.75rem 0;
+}

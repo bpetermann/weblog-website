@@ -3,6 +3,7 @@ import classes from './UserProfile.module.css';
 import { Link } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
 import Spinner from '../shared/Spinner';
+import Button from '../shared/Button';
 
 const UserProfile = ({
   isLoading,
@@ -20,9 +21,7 @@ const UserProfile = ({
     <div className={classes['container']}>
       <header className={classes['header']}>
         <h1>Profile</h1>
-        <button className={classes['logout-button']} onClick={logoutHander}>
-          Logout
-        </button>
+        <Button onClick={logoutHander}>Logout</Button>
       </header>
       <div className={classes['user-details']}>
         <h3 className={classes['user-name']}>{name}</h3>

@@ -28,24 +28,14 @@
 
 .passwordInputDiv {
   position: relative;
-  height: 9rem;
-}
-
-.confirmPasswordInputDiv {
-  position: relative;
-}
-
-.showPassword,
-.showPassword-confirm {
-  cursor: pointer;
-  color: #a6adba;
-  position: absolute;
-  top: 9%;
-  right: 5%;
 }
 
 .showPassword {
-  top: 6%;
+  cursor: pointer;
+  color: #a6adba;
+  position: absolute;
+  top: 10%;
+  right: 5%;
 }
 
 .button-container {
@@ -53,20 +43,8 @@
   justify-content: space-between;
 }
 
-.submit-button {
-  width: 25%;
-  cursor: pointer;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  background-color: #5c1bcf;
-  color: #fff;
-  border: none;
-  border-radius: 0.5rem;
-}
-
-.registerButton {
-  width: 25%;
+.login-link {
+  min-width: 5rem;
   padding: 0.375rem 0.75rem;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -108,7 +86,6 @@
 }
 
 .invalid {
-  background-color: #242933;
   border-color: #f87272;
   outline: 0;
 }

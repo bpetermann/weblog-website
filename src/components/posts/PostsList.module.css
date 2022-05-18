@@ -45,3 +45,8 @@
 .posts-content {
   padding: 1rem;
 }
+
+.button-container {
+  text-align: center;
+  margin: 1.5rem 0;
+}

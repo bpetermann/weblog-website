@@ -15,19 +15,6 @@ input:focus {
   outline: none;
 }
 
-.container {
-  margin-top: 1.75rem;
-  margin: auto;
-  width: 90%;
-}
-
-@media (min-width: 40rem) {
-  .container {
-    width: 75%;
-    max-width: 60rem;
-  }
-}
-
 .no-scroll {
   height: 100vh;
   overflow: hidden;

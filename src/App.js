@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Container from './components/shared/Container';
 import Navbar from './components/layout/Navbar';
 import NavbarModal from './components/layout/NavbarModal';
 import Profile from './pages/Profile';
@@ -22,7 +28,6 @@ function App() {
   useEffect(() => {
     if (modal) {
       document.body.classList.add('no-scroll');
-      console.log('hi');
     } else {
       document.body.classList.remove('no-scroll');
     }
@@ -33,7 +38,7 @@ function App() {
       <Router basename='/weblog-website'>
         <Navbar toggleModal={modalToggleHandler} />
         {modal && <NavbarModal onClose={modalToggleHandler} />}
-        <div className='container'>
+        <Container>
           <Routes>
             <Route path='/' element={<Posts />} />
             <Route path='/profile' element={<PrivateRoute />}>
@@ -44,9 +49,10 @@ function App() {
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/:postId' element={<Post />} />
+            <Route path='/posts/:postId' element={<Post />} />
+            <Route path='/*' element={<Navigate to='/' replace />} />
           </Routes>
-        </div>
+        </Container>
       </Router>
       <ToastContainer theme='colored' />
     </>

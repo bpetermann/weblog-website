@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import classes from './LoginForm.module.css';
 import { AiOutlineEye } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import Button from '../shared/Button';
 
 const LoginForm = ({ setFormData, onSubmit, email, password }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -43,8 +44,8 @@ const LoginForm = ({ setFormData, onSubmit, email, password }) => {
             />
           </div>
           <div className={classes['button-container']}>
-            <button className={classes['loginButton']}>Login</button>
-            <Link to='/register' className={classes['registerButton']}>
+            <Button>Login</Button>
+            <Link to='/register' className={classes['register-link']}>
               Sign Up
             </Link>
           </div>

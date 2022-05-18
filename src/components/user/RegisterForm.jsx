@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import classes from './RegisterForm.module.css';
 import { Link } from 'react-router-dom';
 import { AiOutlineEye } from 'react-icons/ai';
+import Button from '../shared/Button';
 
 const RegisterForm = ({
   onSubmitHandler,
@@ -102,29 +103,30 @@ const RegisterForm = ({
                 }
                 required
               />
+
               <AiOutlineEye
                 onClick={() => setShowPassword((prevState) => !prevState)}
                 size={32}
                 className={classes['showPassword']}
               />
-              <p className={classes['password-info']}>
-                Create a password that is at least 6 characters long and
-                includes 1 special character
-              </p>
-              {passwordIsInavlid && !length && (
-                <p className={classes['invalid-message']}>
-                  *Your password must be at least 6 characters long
-                </p>
-              )}
-
-              {passwordIsInavlid && !specialChars && (
-                <p className={classes['invalid-message']}>
-                  *Your password must contain at least 1 special character
-                </p>
-              )}
             </div>
+            <p className={classes['password-info']}>
+              Create a password that is at least 6 characters long and includes
+              1 special character
+            </p>
+            {passwordIsInavlid && !length && (
+              <p className={classes['invalid-message']}>
+                *Your password must be at least 6 characters long
+              </p>
+            )}
 
-            <div className={classes['confirmPasswordInputDiv']}>
+            {passwordIsInavlid && !specialChars && (
+              <p className={classes['invalid-message']}>
+                *Your password must contain at least 1 special character
+              </p>
+            )}
+
+            <div className={classes['passwordInputDiv']}>
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder='Confirm Password'
@@ -142,18 +144,18 @@ const RegisterForm = ({
               <AiOutlineEye
                 onClick={() => setShowPassword((prevState) => !prevState)}
                 size={32}
-                className={classes['showPassword-confirm']}
+                className={classes['showPassword']}
               />
-              {confirmPasswordIsInvalid && (
-                <p className={classes['invalid-message']}>
-                  *Passwords do not match
-                </p>
-              )}
             </div>
+            {confirmPasswordIsInvalid && (
+              <p className={classes['invalid-message']}>
+                *Passwords do not match
+              </p>
+            )}
 
             <div className={classes['button-container']}>
-              <button className={classes['submit-button']}>Sign Up</button>
-              <Link to='/login' className={classes['registerButton']}>
+              <Button>Sign Up</Button>
+              <Link to='/login' className={classes['login-link']}>
                 Login
               </Link>
             </div>
