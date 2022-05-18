@@ -15,6 +15,15 @@ input:focus {
   outline: none;
 }
 
+textarea {
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+}
+
 .no-scroll {
   height: 100vh;
   overflow: hidden;

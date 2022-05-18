@@ -45,7 +45,7 @@ const UserProfile = ({
             <FaTrashAlt
               size={20}
               className={classes['delete']}
-              onClick={() => onDeleteHandler(post.id)}
+              onClick={() => onDeleteHandler(post.id, post.data.imgRef)}
             />
           </div>
         </div>

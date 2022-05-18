@@ -28,6 +28,7 @@
 
 .hamburger {
   color: #a6adba;
+  cursor: pointer;
 }
 
 @media (min-width: 40rem) {

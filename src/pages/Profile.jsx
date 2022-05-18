@@ -10,6 +10,7 @@ import {
   deleteDoc,
   doc,
 } from 'firebase/firestore';
+import { getStorage, ref, deleteObject } from 'firebase/storage';
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
 import UserProfile from '../components/user/UserProfile';
@@ -56,8 +57,15 @@ const Profile = () => {
     navigate('/');
   };
 
-  const onDeleteHandler = async (postId) => {
+  const onDeleteHandler = async (postId, imgRef) => {
+    const storage = getStorage();
+
+    const desertRef = ref(storage, imgRef);
+
+    await deleteObject(desertRef);
+
     await deleteDoc(doc(db, 'posts', postId));
+
     const updatedPosts = posts.filter((post) => post.id !== postId);
     setPosts(updatedPosts);
     toast.success('Post deleted');

@@ -103,6 +103,7 @@ const AddPost = () => {
     const formDataCopy = {
       ...formData,
       imgUrl: imgUrl[0],
+      imgRef: `images/${auth.currentUser.uid}-${formData.image[0].name}`,
       timestamp: serverTimestamp(),
     };
     delete formDataCopy.image;
