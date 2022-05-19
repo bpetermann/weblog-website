@@ -1,5 +1,5 @@
 .container {
-  margin: 1.75rem 0;
+  margin-top: 2rem;
 }
 
 .search-form {
@@ -27,7 +27,6 @@
 .search-form input:active {
   border-color: #a6adba;
 }
-
 
 .search-icon {
   position: absolute;

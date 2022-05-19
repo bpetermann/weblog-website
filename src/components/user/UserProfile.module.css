@@ -1,5 +1,5 @@
 .container {
-  margin: 1.75rem auto;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,6 +81,7 @@
 .delete {
   color: #f87272;
   align-self: flex-end;
+  cursor: pointer;
 }
 
 .post-tag {

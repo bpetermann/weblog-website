@@ -111,7 +111,7 @@ const AddPost = () => {
     const docRef = await addDoc(collection(db, 'posts'), formDataCopy);
     toast.success('Post saved');
     setLoading(false);
-    navigate(`/${docRef.id}`);
+    navigate(`/posts/${docRef.id}`);
   };
 
   return (
