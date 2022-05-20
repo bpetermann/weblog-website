@@ -62,9 +62,13 @@ const Profile = () => {
 
     const desertRef = ref(storage, imgRef);
 
-    await deleteObject(desertRef);
-
     await deleteDoc(doc(db, 'posts', postId));
+
+    try {
+      await deleteObject(desertRef);
+    } catch (error) {
+      toast.error('Image could not be deleted');
+    }
 
     const updatedPosts = posts.filter((post) => post.id !== postId);
     setPosts(updatedPosts);
