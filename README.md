@@ -12,7 +12,7 @@
 
 ```
 git clone https://github.com/bpetermann/weblog-website.git
-cd cv-application
+cd weblog-website
 npm install
 npm start
 ```
